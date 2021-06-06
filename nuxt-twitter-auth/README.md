@@ -8,6 +8,8 @@
 # install dependencies
 $ npm install # Or yarn install
 
+server/index.jsにTwitterStrategyのコンシューマーキーなどを設定しておく
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 

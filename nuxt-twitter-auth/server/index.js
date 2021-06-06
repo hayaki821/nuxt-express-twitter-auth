@@ -32,8 +32,8 @@ app.use(passport.session());
 passport.use(
   new TwitterStrategy(
     {
-      consumerKey: "FNBKQt3RyIQGmf6CueBhOTJpl",
-      consumerSecret: "3yZo9wx9a2DKP8xV0Cupjlqb0YfTrItqc3ZdxALJYYz57M04KD",
+      consumerKey: "",
+      consumerSecret: "",
       callbackURL: "http://127.0.0.1:3000",
       includeEmail: true,
     },
@@ -56,7 +56,7 @@ passport.use(
 passport.serializeUser((user, done) => {
   console.log(user,"serializeUser")
   //ユーザ情報をセッションに保存する
-  done(null, user.id);
+  done(null, user);
 });
 passport.deserializeUser((obj, done) => {
   done(null, obj);
@@ -73,8 +73,8 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', {
   session: false
 }), (req, res) => {
   // res.cookie('hoge', 'fuga');
-  req.session.user = req.user.id;
-   res.json({ user: req.user.id });
+  req.session.user = req.user;
+   res.json({ user: req.user });
 });
 
 app.get('/user', (req, res) => {

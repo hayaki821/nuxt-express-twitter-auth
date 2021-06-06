@@ -40,7 +40,9 @@ export default {
       console.log(callbackData);
 
       this.setUser({ user: callbackData.data.user });
-      this.$cookies.set("token", callbackData.data.user, { expires: 30 });
+      this.$cookies.set("token", callbackData.data.user.access_token, {
+        expires: 30,
+      });
       //redirect({ name: "home" });
       this.$router.push("home");
     } catch (error) {
